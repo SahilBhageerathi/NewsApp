@@ -74,4 +74,5 @@ dependencies {
     implementation(libs.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.androidx.navigation3.ui)
+    implementation(libs.okhttp.logging.interceptor)
 }

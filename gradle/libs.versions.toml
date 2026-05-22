@@ -15,6 +15,7 @@ coil = "2.6.0"
 navigation = "2.9.0-alpha01"
 kotlinx-serialization = "1.7.3"
 navigation3Ui = "1.1.1"
+okhttp-logging = "4.12.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -40,8 +41,7 @@ coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coi
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 androidx-navigation3-ui = { group = "androidx.navigation3", name = "navigation3-ui", version.ref = "navigation3Ui" }
-
-
+okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp-logging" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
