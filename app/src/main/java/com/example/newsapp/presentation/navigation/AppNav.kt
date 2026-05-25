@@ -8,8 +8,10 @@ import androidx.compose.runtime.remember
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
+import com.example.newsapp.presentation.pages.ContactsScreen
 import com.example.newsapp.presentation.pages.NewsDetailScreen
 import com.example.newsapp.presentation.pages.NewsListScreen
+import com.example.newsapp.presentation.viewmodel.ContactsViewModel
 import com.example.newsapp.presentation.viewmodel.NewsViewModel
 import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.koinInject
@@ -18,6 +20,7 @@ import org.koin.compose.koinInject
 fun AppNav(navigator: AppNavigator = koinInject()) {
     val backStack = remember { mutableStateListOf<Screen>(Screen.NewsList) }
     val viewModel: NewsViewModel = koinViewModel()
+    val contactsViewModel: ContactsViewModel = koinViewModel()
 
     LaunchedEffect(Unit) {
         if (backStack.isEmpty()) {
@@ -27,6 +30,7 @@ fun AppNav(navigator: AppNavigator = koinInject()) {
         navigator.navigation.collect { effect ->
             when (effect) {
                 is NavigationEffect.ToDetail -> backStack.add(Screen.NewsDetail(effect.articleId))
+                is NavigationEffect.ToContactsScreen -> backStack.add(Screen.ContactsScreen)
                 is NavigationEffect.Back -> backStack.removeLastOrNull()
             }
         }
@@ -56,6 +60,15 @@ fun AppNav(navigator: AppNavigator = koinInject()) {
                 NewsDetailScreen(
                     article = viewModel.getArticleById(detail.articleId),
                     onEvent = viewModel::onEvent
+                )
+            }
+
+            entry<Screen.ContactsScreen> {
+
+                val state by contactsViewModel.uiState.collectAsStateWithLifecycle()
+                ContactsScreen(
+                    uiState = state,
+                    onEvent = contactsViewModel::onEvent
                 )
             }
         }

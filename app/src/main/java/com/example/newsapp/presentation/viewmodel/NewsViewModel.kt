@@ -50,7 +50,8 @@ class NewsViewModel(
             }
 
             is NewsEvent.ArticleClicked -> {
-                navigator.navigate(NavigationEffect.ToDetail(event.articleId))
+//                navigator.navigate(NavigationEffect.ToDetail(event.articleId))
+                  navigator.navigate(NavigationEffect.ToContactsScreen)
             }
 
             is NewsEvent.BackClicked -> {

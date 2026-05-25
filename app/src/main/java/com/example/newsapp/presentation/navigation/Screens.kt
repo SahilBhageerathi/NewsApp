@@ -9,4 +9,8 @@ sealed class Screen {
 
     @Serializable
     data class NewsDetail(val articleId: Int) : Screen()
+
+    @Serializable
+    data object ContactsScreen : Screen()
+
 }
