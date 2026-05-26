@@ -26,6 +26,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="com.example.newsapp.data.dataSource.provider.BookmarkContentProvider"
+            android:authorities="com.example.newsapp.provider"
+            android:exported="true" />
+
     </application>
 
 </manifest>

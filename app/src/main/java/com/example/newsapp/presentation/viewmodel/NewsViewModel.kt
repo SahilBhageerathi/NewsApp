@@ -9,6 +9,7 @@ import com.example.newsapp.domain.model.Article
 import com.example.newsapp.domain.repo.NewsRepo
 import com.example.newsapp.presentation.navigation.AppNavigator
 import com.example.newsapp.presentation.navigation.NavigationEffect
+import com.example.newsapp.presentation.navigation.NavigationEffect.*
 import com.example.newsapp.utils.DispatcherProvider
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -50,12 +51,16 @@ class NewsViewModel(
             }
 
             is NewsEvent.ArticleClicked -> {
-//                navigator.navigate(NavigationEffect.ToDetail(event.articleId))
-                  navigator.navigate(NavigationEffect.ToContactsScreen)
+                navigator.navigate(ToDetail(event.articleId))
+//                  navigator.navigate(NavigationEffect.ToContactsScreen)
             }
 
             is NewsEvent.BackClicked -> {
-                navigator.navigate(NavigationEffect.Back)
+                navigator.navigate(Back)
+            }
+
+            NewsEvent.GoToBookmarkedPage -> {
+                navigator.navigate(TBookmarkScreen)
             }
         }
     }

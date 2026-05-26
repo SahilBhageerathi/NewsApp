@@ -7,4 +7,6 @@ sealed class NewsEvent {
 
     data class ArticleClicked(val articleId: Int) : NewsEvent()
     data object BackClicked : NewsEvent()
+
+    data object GoToBookmarkedPage : NewsEvent()
 }

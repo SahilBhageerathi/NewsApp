@@ -13,4 +13,7 @@ sealed class Screen {
     @Serializable
     data object ContactsScreen : Screen()
 
+    @Serializable
+    data object BookmarkScreen : Screen()
+
 }

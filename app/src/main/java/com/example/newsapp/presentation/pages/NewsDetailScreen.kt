@@ -15,6 +15,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Button
@@ -42,7 +44,10 @@ import com.example.newsapp.presentation.viewmodel.NewsEvent
 @OptIn(ExperimentalMaterial3Api::class)
 fun NewsDetailScreen(
     article: Article?,
-    onEvent: (NewsEvent) -> Unit
+    onEvent: (NewsEvent) -> Unit,
+    isBookmarked: Boolean = false,
+    onBookmark: (Article) -> Unit = {},
+    onRemoveBookmark: (Article) -> Unit = {}
 ) {
     Scaffold(
         topBar = {
@@ -57,6 +62,19 @@ fun NewsDetailScreen(
                     }
                 },
                 actions = {
+                    if (article != null) {
+                        IconButton(onClick = {
+                            if (isBookmarked) onRemoveBookmark(article)
+                            else onBookmark(article)
+                        }) {
+                            Icon(
+                                if (isBookmarked) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                                contentDescription = "Bookmark",
+                                tint = if (isBookmarked) MaterialTheme.colorScheme.error
+                                else MaterialTheme.colorScheme.onSurface
+                            )
+                        }
+                    }
                     IconButton(onClick = { /* Share */ }) {
                         Icon(Icons.Default.Share, contentDescription = "Share")
                     }
