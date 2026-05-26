@@ -35,7 +35,7 @@ fun AppNav(navigator: AppNavigator = koinInject()) {
 
     NavDisplay(
         backStack = backStack,
-        onBack = { backStack.removeLast() },
+        onBack = { backStack.removeLastOrNull() },
         entryProvider = entryProvider {
 
             entry<Screen.NewsList> {

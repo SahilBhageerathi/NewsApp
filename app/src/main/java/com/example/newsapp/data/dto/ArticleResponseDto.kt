@@ -30,7 +30,16 @@ data class ArticleDto(
 
 data class AuthorDto(
     val name: String,
-    val socials: String?
+    val socials: SocialsDto?
+)
+
+data class SocialsDto(
+    val x: String?,
+    val youtube: String?,
+    val instagram: String?,
+    val linkedin: String?,
+    val mastodon: String?,
+    val bluesky: String?
 )
 
 data class LaunchDto(
