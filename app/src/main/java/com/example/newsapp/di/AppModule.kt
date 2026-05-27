@@ -7,6 +7,7 @@ import com.example.newsapp.data.repo.NewsRepoImpl
 import com.example.newsapp.domain.repo.NewsRepo
 import com.example.newsapp.presentation.navigation.AppNavigator
 import com.example.newsapp.presentation.viewmodel.NewsViewModel
+import com.example.newsapp.presentation.viewmodel.NotificationViewModel
 import com.example.newsapp.utils.DefaultDispatcherProvider
 import com.example.newsapp.utils.DispatcherProvider
 import org.koin.android.ext.koin.androidContext
@@ -36,4 +37,5 @@ val appModule = module {
 
     // ViewModel
     viewModel { NewsViewModel(get(), get(),get(),get()) }
+    viewModel { NotificationViewModel(get(),get()) }
 }

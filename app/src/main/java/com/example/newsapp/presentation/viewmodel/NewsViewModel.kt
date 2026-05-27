@@ -98,9 +98,20 @@ class NewsViewModel(
     }
 
 
-    fun getArticleById(id: Int?): Article? {
-        return _uiState.value.articles.find { it.id == id }
-    }
+//    fun getArticleById(id: Int?): Article? {
+//        Log.d("NOTIF", "Article ID from viewmodel: $id")
+//        return _uiState.value.articles.find { it.id == id }
+//    }
 
+    fun getArticleById(id: Int?): Article? {
+        Log.d("NOTIF", "Article ID from viewmodel: $id")
+        val article = _uiState.value.articles.find { it.id == id }
+        if (article != null) {
+            Log.d("NOTIF", "Article found: ${article.title}")
+        } else {
+            Log.d("NOTIF", "Article not found for id: $id")
+        }
+        return article
+    }
 
 }
