@@ -2,6 +2,7 @@ package com.example.newsapp.di
 
 import com.example.newsapp.core.Connectivity.ConnectivityObserver
 import com.example.newsapp.core.Connectivity.NetworkConnectivityObserver
+import com.example.newsapp.core.Notification.LocalNotificationService
 import com.example.newsapp.data.dataSource.network.RemoteDataSource
 import com.example.newsapp.data.repo.NewsRepoImpl
 import com.example.newsapp.domain.repo.NewsRepo
@@ -36,4 +37,7 @@ val appModule = module {
 
     // ViewModel
     viewModel { NewsViewModel(get(), get(),get(),get()) }
+
+    //Notification
+    single{ LocalNotificationService(androidContext())}
 }
