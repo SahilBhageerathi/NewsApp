@@ -1,3 +1,9 @@
+import java.util.Properties
+
+val properties = Properties().apply {
+    load(rootProject.file("local.properties").inputStream())
+}
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -25,6 +31,8 @@ android {
     buildTypes {
         debug {
             buildConfigField("String", "BASE_URL", "\"https://api.spaceflightnewsapi.net/v4/\"")
+            buildConfigField("String", "FINNHUB_BASE_URL", "\"${properties["FINNHUB_BASE_URL"]}\"")
+            buildConfigField("String", "FINNHUB_API_KEY",  "\"${properties["FINNHUB_API_KEY"]}\"")
         }
         release {
             isMinifyEnabled = false
@@ -33,6 +41,8 @@ android {
                 "proguard-rules.pro"
             )
             buildConfigField("String", "BASE_URL", "\"https://api.spaceflightnewsapi.net/v4/\"")
+            buildConfigField("String", "FINNHUB_BASE_URL", "\"${properties["FINNHUB_BASE_URL"]}\"")
+            buildConfigField("String", "FINNHUB_API_KEY",  "\"${properties["FINNHUB_API_KEY"]}\"")
         }
     }
     compileOptions {
@@ -74,4 +84,7 @@ dependencies {
     implementation(libs.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.androidx.navigation3.ui)
+
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
 }
