@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1080885451860",
+    "project_id": "fcmandroid-7fc1b",
+    "storage_bucket": "fcmandroid-7fc1b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080885451860:android:96f6c0dc70fd958f3a21c1",
+        "android_client_info": {
+          "package_name": "com.example.newsapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKgsp563vRZ_UAEg_RUiIZgTUlrrSo6Fk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

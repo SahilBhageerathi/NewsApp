@@ -2,9 +2,11 @@ package com.example.newsapp.di
 
 import com.example.newsapp.core.Connectivity.ConnectivityObserver
 import com.example.newsapp.core.Connectivity.NetworkConnectivityObserver
+import com.example.newsapp.core.fcmMessaging.LocalNotifier
 import com.example.newsapp.data.dataSource.network.RemoteDataSource
 import com.example.newsapp.data.repo.NewsRepoImpl
 import com.example.newsapp.domain.repo.NewsRepo
+import com.example.newsapp.presentation.fcm.NotificationViewModel
 import com.example.newsapp.presentation.navigation.AppNavigator
 import com.example.newsapp.presentation.viewmodel.NewsViewModel
 import com.example.newsapp.utils.DefaultDispatcherProvider
@@ -33,6 +35,9 @@ val appModule = module {
 
     // Dispatcher
     single<DispatcherProvider> { DefaultDispatcherProvider() }
+
+    single(createdAtStart = true) { LocalNotifier(androidContext()) }
+    viewModel { NotificationViewModel(get()) }
 
     // ViewModel
     viewModel { NewsViewModel(get(), get(),get(),get()) }
