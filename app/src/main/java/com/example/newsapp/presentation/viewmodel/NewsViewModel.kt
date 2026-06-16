@@ -61,6 +61,17 @@ class NewsViewModel(
 
 
     private fun getNews() {
+
+//        try {
+//            println("1")
+//            viewModelScope.launch {
+//                println("3")
+//                throw RuntimeException("boom")
+//            }
+//            println("2")
+//        } catch (e: Exception) {
+//            println("caught")
+//        }
         viewModelScope.launch(dispatchers.io) {
             _uiState.update { it.copy(isLoading = true, error = null) }
 

@@ -74,4 +74,6 @@ dependencies {
     implementation(libs.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.androidx.navigation3.ui)
+
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 }

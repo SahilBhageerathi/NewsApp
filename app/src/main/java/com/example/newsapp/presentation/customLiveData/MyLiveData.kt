@@ -1,5 +1,6 @@
 package com.example.newsapp.presentation.customLiveData
 
+import android.R.attr.value
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
@@ -18,12 +19,34 @@ open class MyLiveData(val initialValue :Int) : DefaultLifecycleObserver {
     val observers: MutableMap<LifecycleOwner,(Int)->Unit> = mutableMapOf()
     fun notifyObservers(){
         observers.forEach { entry -> entry.value.invoke(temp) }
+
+//        observers.forEach { (owner, callback) ->
+//            // Only notify if owner is ACTIVE (STARTED or RESUMED)
+//            if (owner.lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
+//                callback(value)
+//            }
+//        }
     }
 
     fun observe(owner: LifecycleOwner, observer:(Int)->Unit){
         val lifecycleObserver = MyLifeCycleObserver(owner)
         owner.lifecycle.addObserver(lifecycleObserver)
         observers[owner] = observer
+
+
+//        // Don't register if already destroyed
+//        if (owner.lifecycle.currentState == Lifecycle.State.DESTROYED) return
+//
+//        // Save owner + callback in map
+//        observers[owner] = callback
+//
+//        // Attach lifecycle watcher to auto-remove when destroyed
+//        owner.lifecycle.addObserver(LifecycleBoundObserver(owner))
+
+
+//        "Hey Lifecycle system, please watch this owner (Activity/Fragment) and call my " +
+//        "LifecycleBoundObserver whenever its state changes (CREATED, STARTED, RESUMED, PAUSED, STOPPED, DESTROYED)
+
 
     }
     private fun removeObserver(owner: LifecycleOwner){
