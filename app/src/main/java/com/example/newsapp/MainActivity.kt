@@ -9,11 +9,15 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.newsapp.presentation.animation.AnimationPage
 import com.example.newsapp.presentation.customLayout.CustomColumn
 import com.example.newsapp.presentation.kotlinBasics.Test
 import com.example.newsapp.presentation.navigation.AppNav
+import com.example.newsapp.presentation.performance.JankyListScreen
+import com.example.newsapp.presentation.performance.JankyListScreen2
 import com.example.newsapp.ui.theme.NewsAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,12 +26,17 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             NewsAppTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    AppNav()
+                Scaffold(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .semantics { testTagsAsResourceId = true }
+                ) { innerPadding ->
+//                    AppNav()
 //                    CounterScreen()
 //                    val test = Test()
 //                    AnimationPage()
 //                    CustomColumn()
+                    JankyListScreen2()
                 }
             }
         }

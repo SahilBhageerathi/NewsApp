@@ -34,6 +34,13 @@ android {
             )
             buildConfigField("String", "BASE_URL", "\"https://api.spaceflightnewsapi.net/v4/\"")
         }
+
+        create("benchmark1") {
+            initWith(buildTypes.getByName("release"))
+            signingConfig = signingConfigs.getByName("debug")
+            matchingFallbacks += listOf("release")
+            isDebuggable = false
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
